@@ -1,6 +1,7 @@
 package com.android.bobpool.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 @WebServlet("/DBConnection")
 public class AndroidConnection extends HttpServlet {
 
@@ -20,17 +24,26 @@ public class AndroidConnection extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		JSONObject jObject = new JSONObject();
+		JSONArray jArray = new JSONArray();
+		String jsonData = null;
 		System.out.println("called");
 		try {
-			DBConnectionTest();
+			DBConnectionTest(jArray);
 		} catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+		
+		jObject.put("Mdata",jArray);
+		jsonData = jObject.toString();
+		System.out.println(jObject.toString());
+		out.print(jsonData);
 	}
-	
-	public void DBConnectionTest() throws ClassNotFoundException, SQLException {
+	@SuppressWarnings("unchecked")
+	public void DBConnectionTest(JSONArray jArray) throws ClassNotFoundException, SQLException {
 		Connection conn = getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -40,10 +53,12 @@ public class AndroidConnection extends HttpServlet {
 			System.out.println("mysql connected");
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			int i = 0;
+//			int i = 0;
 			while(rs.next()) {
+				JSONObject sObject = new JSONObject();
 				System.out.println(rs.getString("age"));
 				System.out.println(rs.getString("name"));
+				jArray.add(sObject);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
