@@ -6,10 +6,10 @@ tomcat + spring
 
 ...
 
-## issue
+## issue(01.20)
 high sierra 환경에서 mysql dmg file install error(환경설정 패널 자체가 열리지 않음)
 
-현재 homebrew 사용하여 재시도중..
+현재 homebrew 사용하여 재시도중..(해결)
 
 ## git 명령어
 
