@@ -17,9 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-@WebServlet("/DBConnection")
+/**
+ * Servlet implementation class AndroidConnection
+ */
+@WebServlet("/BobDBConnection")
 public class AndroidConnection extends HttpServlet {
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
@@ -32,12 +35,14 @@ public class AndroidConnection extends HttpServlet {
 		try {
 			DBConnectionTest(jArray);
 		} catch(ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch(SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		jObject.put("Mdata",jArray);
+		jObject.put("Mdata", jArray);
 		jsonData = jObject.toString();
 		System.out.println(jObject.toString());
 		out.print(jsonData);
@@ -48,7 +53,7 @@ public class AndroidConnection extends HttpServlet {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from bobpool";
+		String sql = "select * from UserInfo";
 		try {
 			System.out.println("mysql connected");
 			ps = conn.prepareStatement(sql);
@@ -56,8 +61,9 @@ public class AndroidConnection extends HttpServlet {
 //			int i = 0;
 			while(rs.next()) {
 				JSONObject sObject = new JSONObject();
-				System.out.println(rs.getString("age"));
-				System.out.println(rs.getString("name"));
+				sObject.put("Age",rs.getString("Age"));
+				sObject.put("name",rs.getString("name"));
+				sObject.put("address",rs.getString("address"));
 				jArray.add(sObject);
 			}
 		} catch (Exception e) {
@@ -75,9 +81,8 @@ public class AndroidConnection extends HttpServlet {
 	}
 	
 	private Connection getConnection() throws ClassNotFoundException, SQLException{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/스키마", "계정아이디(root)","비밀번호");
+		Class.forName("com.mysql.jdbc.Driver"); 
+		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/스키마이름", "아이디","비밀번호");
 		return c;
 	}
-
 }
