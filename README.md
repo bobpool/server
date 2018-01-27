@@ -16,7 +16,7 @@ git push origin <branch name> : 해당 branch로 push
 
 master branch와 추가 branch간 히스토리가 다르다는 오류로 pull request가 안될때 
 
-git rebase --onto master <branch name> : <branch name> commit 히스토리를 master에 맞춰줌(?)... 
+git rebase --onto master <branch name> : branch commit 히스토리를 master에 맞춰줌(?)... 
 
 git cherry-pick <commit 히스토리..> : 새로운 branch의 최종 commit 번호를 확인하고 이동 
 
