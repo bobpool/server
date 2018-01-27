@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 jdlksdjflkasjd
 
 sdjklsdfjsldfjs
 sdfjslff
+=======
+jdlksdjflkasjdf
+>>>>>>> 85230c9... test2
 
 
 
