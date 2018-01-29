@@ -22,12 +22,52 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>dbconnection</display-name>
-    <servlet-name>dbconnection</servlet-name>
-    <servlet-class>com.android.server.dbconnection</servlet-class>
+    <display-name>RestaurantService</display-name>
+    <servlet-name>RestaurantService</servlet-name>
+    <servlet-class>com.android.server.servlet.RestaurantService</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>dbconnection</servlet-name>
-    <url-pattern>/dbconnection</url-pattern>
+    <servlet-name>RestaurantService</servlet-name>
+    <url-pattern>/RestaurantService</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MenuService</display-name>
+    <servlet-name>MenuService</servlet-name>
+    <servlet-class>com.android.server.servlet.MenuService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MenuService</servlet-name>
+    <url-pattern>/MenuService</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PartyMatchingService</display-name>
+    <servlet-name>PartyMatchingService</servlet-name>
+    <servlet-class>com.android.server.servlet.PartyMatchingService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PartyMatchingService</servlet-name>
+    <url-pattern>/PartyMatchingService</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReviewService</display-name>
+    <servlet-name>ReviewService</servlet-name>
+    <servlet-class>com.android.server.servlet.ReviewService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewService</servlet-name>
+    <url-pattern>/ReviewService</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreatePartyService</display-name>
+    <servlet-name>CreatePartyService</servlet-name>
+    <servlet-class>com.android.server.servlet.CreatePartyService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreatePartyService</servlet-name>
+    <url-pattern>/CreatePartyService</url-pattern>
   </servlet-mapping>
 </web-app>
